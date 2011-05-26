@@ -9,3 +9,6 @@ Changes I decided to make:
 -> I didn't like the loadTheme option triggering a click on the ul list and subsequently calling the onselect callback. So I made a couple simple modifications to the cookie read / loadTheme option behaviour, eliminating the click trigger and the onselect callback. This way the onselect callback is only triggered when an actual user instantiated selection is made on the widget.
 
 It is worthy to note that this widget requires the jquery cookie plugin, which is not included here.
+
+Any other ideas for bettering this very useful plugin are welcome! And I hope it does make its way to jquery-ui core, 
+or at least have some sort of presence on their repository...
