@@ -7,3 +7,5 @@ Changes I decided to make:
 -> instead of creating the ul list with the jquery-ui themes with a single string, I decided to construct an object that is then iterated to create the string with the ul list. This way it is much easier to add / subtract themes from the list.
 
 -> I didn't like the loadTheme option triggering a click on the ul list and subsequently calling the onselect callback. So I made a couple simple modifications to the cookie read / loadTheme option behaviour, eliminating the click trigger and the onselect callback. This way the onselect callback is only triggered when an actual user instantiated selection is made on the widget.
+
+It is worthy to note that this widget requires the jquery cookie plugin, which is not included here.
