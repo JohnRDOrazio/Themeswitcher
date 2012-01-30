@@ -92,7 +92,7 @@ $.fn.themeswitcher = function(settings){
      "thumb":"http://static.jquery.com/ui/themeroller/images/themeGallery/theme_30_ui_light.png"},
     {"themeName":"Vader",
      "url":"http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/vader/jquery-ui.css",
-     "thumb":"http://static.jquery.com/ui/themeroller/images/themeGallery/theme_30_black_matte.png"},
+     "thumb":"http://static.jquery.com/ui/themeroller/images/themeGallery/theme_30_black_matte.png"}
   ];
   ul_string = '<div class="jquery-ui-themeswitcher"><div id="themeGallery"><ul>';
   numthemes = ui_themes.length;
