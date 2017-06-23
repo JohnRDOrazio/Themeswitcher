@@ -1,7 +1,7 @@
 /* jQuery plugin themeswitcher
 ---------------------------------------------------------------------*/
 (function($, undefined) {
-	$.themeswitcher = { "version":"2.0.45" };
+	$.themeswitcher = { "version":"2.0.46" };
 	Object.freeze($.themeswitcher);
 
 	$.fn.themeswitcher = function(settings){
@@ -17,11 +17,8 @@
 			var options = jQuery.extend({
 				loadTheme: null,
 				initialText: 'Switch Theme',
-				width: 150,
-				height: 200,
 				buttonPreText: 'Theme: ',
 				closeOnSelect: true,
-				buttonHeight: 14,
 				cookieName: 'jquery-ui-theme',
 				jqueryUiVersion: '1.12.1',
 				onOpen: function(){},
@@ -133,11 +130,11 @@
 			button.click(
 				function(){
 					if(switcherpane.is(':visible')){
-						button.button("option", "icon", "ui-icon-caret-1-n");
+						button.button("option", "icon", "ui-icon-caret-1-s");
 						switcherpane.spHide();
 					}
 					else{ 
-						button.button("option", "icon", "ui-icon-caret-1-s");
+						button.button("option", "icon", "ui-icon-caret-1-n");
 						switcherpane.spShow(); 
 					}
 					return false;
@@ -152,7 +149,7 @@
 			);
 			*/
 			//show/hide panel functions
-			$.fn.spShow = function(){ $(this).css({top: button.offset().top + options.buttonHeight + 6, left: button.offset().left}).slideDown(50); /*button.css(button_active);*/ options.onOpen(); }
+			$.fn.spShow = function(){ $(this).css({top: button.offset().top + button.height(), left: button.offset().left, width: button.width() }).slideDown(50); /*button.css(button_active);*/ options.onOpen(); }
 			$.fn.spHide = function(){ $(this).slideUp(50, function(){options.onClose();}); /*button.css(button_default);*/ }
 
 
@@ -216,8 +213,8 @@
 				'-moz-border-radius-bottomright': '6px',
 				'-webkit-border-bottom-right-radius': '6px',
 				borderTop: 0,
-				zIndex: 999999,
-				width: options.width-6//minus must match left and right padding
+				zIndex: 999999/*,
+				width: options.width-6//minus must match left and right padding*/
 			})
 			.find('ul').css({
 				listStyle: 'none',
@@ -225,7 +222,7 @@
 				padding: '0',
 				overflow: 'auto',
 				overflowX: 'hidden', // NEW
-				height: options.height
+				height: button.height()
 			}).end()
 			.find('li').hover(
 				function(){ 
@@ -243,7 +240,7 @@
 					}); 
 				}
 			).css({
-				width: options.width - 30,
+				width: button.width() - 30,
 				height: '',
 				padding: '2px',
 				margin: '1px',
