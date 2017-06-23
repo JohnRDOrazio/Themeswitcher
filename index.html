@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+  <title>jQuery UI themeswitcher</title>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <!-- <link rel="stylesheet" type="text/css" href="themeswitcher.css" /> -->
+  <style>
+    table { width: 100%; border-collapse: collapse; }
+    table td { 
+      width: 50%; 
+      text-align: center; 
+      border: 1px solid rgba(255, 221, 221, 0.1); 
+      padding-bottom: 12px; 
+      background-color: lightslategray;
+      box-shadow: 1px 1px 3px Black;
+    }
+  </style>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="themeswitcher.js"></script>
+  <script type="text/javascript">
+    $("input[type=radio], input[type=checkbox]").checkboxradio();
+  </script>
+</head>
+<body>
+  <h1>John R. D'Orazio's version of the jQuery Themeswitcher</h1>
+  <div id="themeswitcher"></div>
+  <table>
+    <tr><td>jQuery UI Datepicker</td><td></td></tr>
+    <tr><td>jQuery UI Button</td><td></td></tr>
+    <tr><td>jQuery UI Buttonset</td><td></td></tr>
+    <tr><td>jQuery UI Checkboxradio Radio Group</td>
+        <td><fieldset>
+          <legend>Select a Location: </legend>
+          <label for="radio-1">New York</label>
+          <input type="radio" name="radio-1" id="radio-1">
+          <label for="radio-2">Paris</label>
+          <input type="radio" name="radio-1" id="radio-2">
+          <label for="radio-3">London</label>
+          <input type="radio" name="radio-1" id="radio-3">
+        </fieldset>
+        </td>
+    </tr>
+    <tr><td>jQuery UI Checkboxradio Checkbox Group</td>
+        <td><fieldset>
+          <legend>Fruit Basket Contents: </legend>
+          <label for="checkbox-1">Apples</label>
+          <input type="checkbox" name="checkbox-1" id="checkbox-1">
+          <label for="checkbox-2">Pears</label>
+          <input type="checkbox" name="checkbox-2" id="checkbox-2">
+          <label for="checkbox-3">Bananas</label>
+          <input type="checkbox" name="checkbox-3" id="checkbox-3">
+          <label for="checkbox-4">Grapes</label>
+          <input type="checkbox" name="checkbox-4" id="checkbox-4">
+        </fieldset>
+        </td>
+    </tr>
+    <tr><td>jQuery UI Datepicker</td><td></td></tr>
+  </table>
+</body>
