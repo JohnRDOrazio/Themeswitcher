@@ -1,7 +1,7 @@
 /* jQuery plugin themeswitcher
 ---------------------------------------------------------------------*/
 (function($, undefined) {
-	$.themeswitcher = { "version":"2.0.46" };
+	$.themeswitcher = { "version":"2.0.47" };
 	Object.freeze($.themeswitcher);
 
 	$.fn.themeswitcher = function(settings){
@@ -201,20 +201,17 @@
 			//pane css
 			switcherpane.css({
 				position: 'absolute',
-				/* float: 'left', */
 				fontFamily: 'Trebuchet MS, Verdana, sans-serif',
+				display: 'inline-block',
 				fontSize: '12px',
 				background: '#000',
 				color: '#fff',
-				padding: '8px 3px 3px',
+				padding: '8px 3px 3px 3px',
 				border: '1px solid #ccc',
-				'-moz-border-radius-bottomleft': '6px',
-				'-webkit-border-bottom-left-radius': '6px',
-				'-moz-border-radius-bottomright': '6px',
-				'-webkit-border-bottom-right-radius': '6px',
+				borderRadius: '6px',
 				borderTop: 0,
 				zIndex: 999999,
-				width: button.width()-6//minus must match left and right padding*/
+				width: button.width()//minus must match left and right padding*/
 			})
 			.find('ul').css({
 				listStyle: 'none',
@@ -222,7 +219,7 @@
 				padding: '0',
 				overflow: 'auto',
 				overflowX: 'hidden', // NEW
-				height: button.height()
+				height: '500px'
 			}).end()
 			.find('li').hover(
 				function(){ 
@@ -241,11 +238,11 @@
 				}
 			).css({
 				width: button.width() - 30,
-				height: '',
+				height: button.height(),
 				padding: '2px',
 				margin: '1px',
 				border: '1px solid #111',
-				'-moz-border-radius': '4px',
+				borderRadius: '4px',
 				clear: 'left',
 				float: 'left'
 			}).end()
