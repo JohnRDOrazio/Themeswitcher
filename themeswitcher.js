@@ -1,7 +1,7 @@
 /* jQuery plugin themeswitcher
 ---------------------------------------------------------------------*/
 (function($, undefined) {
-	$.themeswitcher = { "version":"2.0.35" };
+	$.themeswitcher = { "version":"2.0.36" };
 	Object.freeze($.themeswitcher);
 
 	$.fn.themeswitcher = function(settings){
@@ -175,7 +175,7 @@
 				fontFamily: 'Trebuchet MS, Verdana, sans-serif',
 				fontSize: '11px',
 				color: '#666',
-				background: '#eee url(themes/glorioso/images/themeswitcher/buttonbg.png) 50% 50% repeat-x',
+				background: 'linear-gradient(to bottom, #f2f2f2 7%,#7f848c 100%)',
 				border: '1px solid #ccc',
 				'-moz-border-radius': '6px',
 				'-webkit-border-radius': '6px',
@@ -218,7 +218,7 @@
 				float: 'right',
 				width: '16px',
 				height: '16px',
-				background: 'url(themes/glorioso/images/themeswitcher/icon_color_arrow.gif) 50% 50% no-repeat'
+				background: 'url(data:image/gif;base64,R0lGODlhBQADAIABAI+Pj////yH5BAEAAAEALAAAAAAFAAMAAAIFhB0XC1sAOw==) 50% 50% no-repeat'
 			});	
 			//pane css
 			switcherpane.css({
@@ -250,15 +250,15 @@
 				function(){ 
 					$(this).css({
 						'borderColor':'#555',
-						'background': 'url(themes/glorioso/images/themeswitcher/menuhoverbg.png) 50% 50% repeat-x',
-						cursor: 'pointer'
+						'background': 'linear-gradient(to bottom, #848484 0%,#1e1f21 80%,#1e1f21 80%)',
+						'cursor': 'pointer'
 					}); 
 				},
 				function(){ 
 					$(this).css({
 						'borderColor':'#111',
 						'background': '#000',
-						cursor: 'auto'
+						'cursor': 'auto'
 					}); 
 				}
 			).css({
