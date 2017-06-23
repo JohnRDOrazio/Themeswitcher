@@ -1,18 +1,18 @@
 /* jQuery plugin themeswitcher
 ---------------------------------------------------------------------*/
 (function($, undefined) {
-	$.themeswitcher = { "version":"2.0.38" };
+	$.themeswitcher = { "version":"2.0.39" };
 	Object.freeze($.themeswitcher);
 
 	$.fn.themeswitcher = function(settings){
-		console.log('value of "this" at first instantiation:');
-		console.log(this);
+		//console.log('value of "this" at first instantiation:');
+		//console.log(this);
 		
 		return this.each(function(){
 			
-			console.log('value of "this" in each iterator:');
-			console.log(this);
-			console.log($(this));
+			//console.log('value of "this" in each iterator:');
+			//console.log(this);
+			//console.log($(this));
 			//USER DEFINEABLE OPTIONS
 			var options = jQuery.extend({
 				loadTheme: null,
@@ -288,8 +288,8 @@
 				margin: '3px 0'
 			}).end();
 			
-			console.log(button);
-			console.log(switcherpane);
+			//console.log(button);
+			//console.log(switcherpane);
 			
 			button.appendTo(this);
 			switcherpane.appendTo('body');
