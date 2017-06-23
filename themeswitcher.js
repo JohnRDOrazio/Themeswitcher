@@ -1,7 +1,7 @@
 /* jQuery plugin themeswitcher
 ---------------------------------------------------------------------*/
 (function($, undefined) {
-	$.themeswitcher = { "version":"2.0.42" };
+	$.themeswitcher = { "version":"2.0.43" };
 	Object.freeze($.themeswitcher);
 
 	$.fn.themeswitcher = function(settings){
@@ -35,12 +35,12 @@
 			}
 			
 			//MARKUP
-			var button = $('<a href="#" class="jquery-ui-themeswitcher-trigger"><span class="jquery-ui-themeswitcher-icon"></span><span class="jquery-ui-themeswitcher-title">'+ options.initialText +'</span></a>').button(
+			var button = $('<a href="#" class="jquery-ui-themeswitcher-trigger"><span class="jquery-ui-themeswitcher-icon"></span><span class="jquery-ui-themeswitcher-title">'+ options.initialText +'</span></a>').button({
 				icons: { 
 					primary: "ui-icon-circle-plus",
 					secondary: "ui-icon-caret-1-s"
 				}
-			),
+			}),
 			    ui_themes = [
 				{"themeName":"Base",
 				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/base/jquery-ui.css",
