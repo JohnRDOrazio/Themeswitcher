@@ -156,7 +156,7 @@
 				$(this).css({
 					top: button.offset().top + button.outerHeight(), 
 					left: button.offset().left, 
-					width: button.outerWidth()-(window.innerWidth-Math.round($(window).width()/2))
+					width: button.outerWidth() - Math.round( (window.innerWidth - $(window).width()) / 2 )
 				}).slideDown(50); /*button.css(button_active);*/ 
 				
 				options.onOpen(); 
