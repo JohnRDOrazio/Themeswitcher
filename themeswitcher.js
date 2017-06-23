@@ -1,7 +1,7 @@
 /* jQuery plugin themeswitcher
 ---------------------------------------------------------------------*/
 (function($, undefined) {
-	$.themeswitcher = { "version":"2.0.36" };
+	$.themeswitcher = { "version":"2.0.37" };
 	Object.freeze($.themeswitcher);
 
 	$.fn.themeswitcher = function(settings){
