@@ -1,7 +1,7 @@
 /* jQuery plugin themeswitcher
 ---------------------------------------------------------------------*/
 (function($, undefined) {
-	$.themeswitcher = { "version":"2.0.44" };
+	$.themeswitcher = { "version":"2.0.45" };
 	Object.freeze($.themeswitcher);
 
 	$.fn.themeswitcher = function(settings){
@@ -36,10 +36,8 @@
 			
 			//MARKUP
 			var button = $('<a href="#" class="jquery-ui-themeswitcher-trigger" style="min-width: 250px;" title="'+ options.initialText +'">'+ options.initialText +'</a>').button({
-				icons: { 
-					primary: "ui-icon-circle-plus",
-					secondary: "ui-icon-caret-1-s"
-				}
+				icon: "ui-icon-caret-1-s",
+				iconPosition: "end"
 			}),
 			    ui_themes = [
 				{"themeName":"Base",
@@ -135,11 +133,11 @@
 			button.click(
 				function(){
 					if(switcherpane.is(':visible')){
-						button.button("option", icons: { primary: "ui-icon-circle-minus", secondary: "ui-icon-caret-1-n" });
+						button.button("option", "icon", "ui-icon-caret-1-n");
 						switcherpane.spHide();
 					}
 					else{ 
-						button.button("option", icons: { primary: "ui-icon-circle-plus", secondary: "ui-icon-caret-1-s" });
+						button.button("option", "icon", "ui-icon-caret-1-s");
 						switcherpane.spShow(); 
 					}
 					return false;
