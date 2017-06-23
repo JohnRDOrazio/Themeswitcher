@@ -1,7 +1,7 @@
 /* jQuery plugin themeswitcher
 ---------------------------------------------------------------------*/
 (function($, undefined) {
-	$.themeswitcher = { "version":"2.0.37" };
+	$.themeswitcher = { "version":"2.0.38" };
 	Object.freeze($.themeswitcher);
 
 	$.fn.themeswitcher = function(settings){
@@ -152,7 +152,7 @@
 				updateCSS( $(this).attr('href') );
 				var themeName = $(this).find('span').text();
 				button.find('.jquery-ui-themeswitcher-title').text( options.buttonPreText + themeName );
-				if(Cookies !== null){ Cookies.set(options.cookieName, themeName); }
+				if(typeof Cookies !== 'undefined'){ Cookies.set(options.cookieName, themeName); }
 				options.onSelect();
 				if(options.closeOnSelect && switcherpane.is(':visible')){ switcherpane.spHide(); }
 				return false;
@@ -295,9 +295,11 @@
 			switcherpane.appendTo('body');
 			
 			switcherpane.hide();
-			if(Cookies !== null){
+			
+			var themeName = '';
+			if(typeof Cookies !== 'undefined'){
 				if( Cookies.get(options.cookieName) || options.loadTheme ){
-					var themeName = Cookies.get(options.cookieName) || options.loadTheme;
+					themeName = Cookies.get(options.cookieName) || options.loadTheme;
 					mylink = switcherpane.find('a:contains('+ themeName +')');
 					updateCSS( $(mylink).attr('href') );
 					button.find('.jquery-ui-themeswitcher-title').text( options.buttonPreText + themeName );
@@ -305,7 +307,7 @@
 				}
 			}else{
 				if( options.loadTheme ){
-					var themeName = options.loadTheme;
+					themeName = options.loadTheme;
 					mylink = switcherpane.find('a:contains('+ themeName +')');
 					updateCSS( $(mylink).attr('href') );
 					button.find('.jquery-ui-themeswitcher-title').text( options.buttonPreText + themeName );
