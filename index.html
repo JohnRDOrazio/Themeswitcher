@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-  <!-- version 1.0.1 of this web page -->
+  <!-- version 1.0.2 of this web page -->
   <title>jQuery UI themeswitcher</title>
   <meta charset="UTF-8">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
@@ -27,8 +27,10 @@
   <script type="text/javascript">
     console.log("jQuery ui version: "+jQuery.ui.version);
     console.log("JohnRDOrazio Themeswitcher version: "+jQuery.themeswitcher.version);
-    $("#themeswitcher").themeswitcher({"loadTheme":"Humanity"});
-    $("input[type=radio], input[type=checkbox]").checkboxradio();
+    jQuery(document).ready(function( $ ) {
+      $("#themeswitcher").themeswitcher({"loadTheme":"Humanity"});
+      $("input[type=radio], input[type=checkbox]").checkboxradio();
+    });
   </script>
 </head>
 <body>
