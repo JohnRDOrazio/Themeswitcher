@@ -1,7 +1,7 @@
 /* jQuery plugin themeswitcher
 ---------------------------------------------------------------------*/
 (function($, undefined) {
-	$.themeswitcher = { "version":"2.0.43" };
+	$.themeswitcher = { "version":"2.0.44" };
 	Object.freeze($.themeswitcher);
 
 	$.fn.themeswitcher = function(settings){
@@ -35,7 +35,7 @@
 			}
 			
 			//MARKUP
-			var button = $('<a href="#" class="jquery-ui-themeswitcher-trigger"><span class="jquery-ui-themeswitcher-icon"></span><span class="jquery-ui-themeswitcher-title">'+ options.initialText +'</span></a>').button({
+			var button = $('<a href="#" class="jquery-ui-themeswitcher-trigger" style="min-width: 250px;" title="'+ options.initialText +'">'+ options.initialText +'</a>').button({
 				icons: { 
 					primary: "ui-icon-circle-plus",
 					secondary: "ui-icon-caret-1-s"
@@ -134,18 +134,25 @@
 			//button events
 			button.click(
 				function(){
-					if(switcherpane.is(':visible')){ switcherpane.spHide(); }
-					else{ switcherpane.spShow(); }
-							return false;
+					if(switcherpane.is(':visible')){
+						button.button("option", icons: { primary: "ui-icon-circle-minus", secondary: "ui-icon-caret-1-n" });
+						switcherpane.spHide();
+					}
+					else{ 
+						button.button("option", icons: { primary: "ui-icon-circle-plus", secondary: "ui-icon-caret-1-s" });
+						switcherpane.spShow(); 
+					}
+					return false;
 				}
 			);
 
+			/*
 			//menu events (mouseout didn't work...)
 			switcherpane.hover(
 				function(){},
 				function(){ if(switcherpane.is(':visible')){$(this).spHide();} }
 			);
-
+			*/
 			//show/hide panel functions
 			$.fn.spShow = function(){ $(this).css({top: button.offset().top + options.buttonHeight + 6, left: button.offset().left}).slideDown(50); /*button.css(button_active);*/ options.onOpen(); }
 			$.fn.spHide = function(){ $(this).slideUp(50, function(){options.onClose();}); /*button.css(button_default);*/ }
@@ -156,7 +163,8 @@
 			switcherpane.find('a').click(function(){
 				updateCSS( $(this).attr('href') );
 				var themeName = $(this).find('span').text();
-				button.find('.jquery-ui-themeswitcher-title').text( options.buttonPreText + themeName );
+				//button.find('.jquery-ui-themeswitcher-title').text( options.buttonPreText + themeName );
+				button.button('option', 'label', options.buttonPreText + themeName);
 				if(typeof Cookies !== 'undefined'){ Cookies.set(options.cookieName, themeName); }
 				options.onSelect();
 				if(options.closeOnSelect && switcherpane.is(':visible')){ switcherpane.spHide(); }
@@ -166,12 +174,12 @@
 			//function to append a new theme stylesheet with the new style changes
 			var updateCSS = function(locStr){
 				var cssLink = $('<link href="'+locStr+'" type="text/css" rel="Stylesheet" class="ui-theme" />');
-				$("head").append(cssLink);
+				cssLink.appendTo('head');
 
-
+				//try never to have more than 3 stylesheets loaded at a time
 				if( $("link.ui-theme").size() > 3){
-					$("link.ui-theme:first").remove();
-				}	
+					$("link.ui-theme").filter(":first").remove();
+				}
 			};	
 
 			/* Inline CSS 
