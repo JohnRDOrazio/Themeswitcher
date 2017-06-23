@@ -1,7 +1,7 @@
 /* jQuery plugin themeswitcher
 ---------------------------------------------------------------------*/
 (function($, undefined) {
-	$.themeswitcher = { "version":"2.0.52" };
+	$.themeswitcher = { "version":"2.0.54" };
 	Object.freeze($.themeswitcher);
 
 	$.fn.themeswitcher = function(settings){
@@ -131,10 +131,12 @@
 				function(){
 					if(switcherpane.is(':visible')){
 						button.button("option", "icon", "ui-icon-caret-1-s");
+						button.removeClass("ui-corner-top").addClass("ui-corner-all");
 						switcherpane.spHide();
 					}
 					else{ 
 						button.button("option", "icon", "ui-icon-caret-1-n");
+						button.removeClass("ui-corner-all").addClass("ui-corner-top");
 						switcherpane.spShow(); 
 					}
 					return false;
@@ -149,8 +151,19 @@
 			);
 			*/
 			//show/hide panel functions
-			$.fn.spShow = function(){ $(this).css({top: button.offset().top + button.outerHeight(), left: button.offset().left, width: button.outerWidth() }).slideDown(50); /*button.css(button_active);*/ options.onOpen(); }
-			$.fn.spHide = function(){ $(this).slideUp(50, function(){options.onClose();}); /*button.css(button_default);*/ }
+			$.fn.spShow = function(){ 
+				
+				$(this).css({
+					top: button.offset().top + button.outerHeight(), 
+					left: button.offset().left, 
+					width: button.outerWidth()-(window.innerWidth-$(window).width()-1)
+				}).slideDown(50); /*button.css(button_active);*/ 
+				
+				options.onOpen(); 
+			}
+			$.fn.spHide = function(){ 
+				
+				$(this).slideUp(50, function(){options.onClose();}); /*button.css(button_default);*/ }
 
 
 			/* Theme Loading
@@ -165,6 +178,7 @@
 				if(options.closeOnSelect && switcherpane.is(':visible')){ 
 					switcherpane.spHide(); 
 					button.button("option","icon","ui-icon-caret-1-s");
+					button.removeClass("ui-corner-top").addClass("ui-corner-all");
 				}
 				return false;
 			});
@@ -211,7 +225,7 @@
 				color: '#fff',
 				padding: '8px 3px 3px 3px',
 				border: '1px solid #ccc',
-				borderRadius: '6px',
+				borderRadius: '0px 0px 6px 6px',
 				borderTop: 0,
 				zIndex: 999999,
 				width: button.outerWidth()
@@ -282,7 +296,7 @@
 					themeName = Cookies.get(options.cookieName) || options.loadTheme;
 					mylink = switcherpane.find('a:contains('+ themeName +')');
 					updateCSS( $(mylink).attr('href') );
-					button.find('.jquery-ui-themeswitcher-title').text( options.buttonPreText + themeName );
+					button.button('option', 'label', options.buttonPreText + themeName );
 					Cookies.set(options.cookieName, themeName);
 				}
 			}else{
@@ -290,7 +304,7 @@
 					themeName = options.loadTheme;
 					mylink = switcherpane.find('a:contains('+ themeName +')');
 					updateCSS( $(mylink).attr('href') );
-					button.find('.jquery-ui-themeswitcher-title').text( options.buttonPreText + themeName );
+					button.button('option', 'label', options.buttonPreText + themeName );
 				}		
 			}
 		});
