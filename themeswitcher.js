@@ -271,7 +271,8 @@
 			float: 'left',
 			margin: '3px 0'
 		}).end();
-
+		console.log(this);
+		console.log($(this).attr("id"));
 		$(this).append(button);
 		$('body').append(switcherpane);
 		switcherpane.hide();
