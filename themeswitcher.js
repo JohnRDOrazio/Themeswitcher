@@ -1,7 +1,7 @@
 /* jQuery plugin themeswitcher
 ---------------------------------------------------------------------*/
 (function($, undefined) {
-	$.themeswitcher = { "version":"2.0.51" };
+	$.themeswitcher = { "version":"2.0.52" };
 	Object.freeze($.themeswitcher);
 
 	$.fn.themeswitcher = function(settings){
@@ -250,18 +250,22 @@
 				color: '#aaa',
 				textDecoration: 'none',
 				display: 'block',
-				outline: '0'
+				lineHeight: '2.2em'
 			}).end()
 			.find('img').css({
 				display: 'inline-block',
 				border: '1px solid #333',
-				margin: '0 2px'
+				margin: '0 6px',
+				lineHeight: 'normal',
+				verticalAlign: 'middle'
 			}).end()
 			.find('.themeName').css({
 				display: 'inline-block',
 				fontSize: '2em',
 				fontWeight: 'bold',
-				margin: '3px 0'
+				margin: '0px 9px',
+				lineHeight: 'normal',
+				verticalAlign: 'middle'
 			}).end();
 			
 			//console.log(button);
