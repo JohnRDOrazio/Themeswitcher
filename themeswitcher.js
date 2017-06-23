@@ -1,13 +1,18 @@
 /* jQuery plugin themeswitcher
 ---------------------------------------------------------------------*/
 (function($, undefined) {
-	$.themeswitcher = { "version":"2.0.3" };
+	$.themeswitcher = { "version":"2.0.35" };
 	Object.freeze($.themeswitcher);
 
 	$.fn.themeswitcher = function(settings){
+		console.log('value of "this" at first instantiation:');
+		console.log(this);
 		
 		return this.each(function(){
 			
+			console.log('value of "this" in each iterator:');
+			console.log(this);
+			console.log($(this));
 			//USER DEFINEABLE OPTIONS
 			var options = jQuery.extend({
 				loadTheme: null,
@@ -282,10 +287,13 @@
 				float: 'left',
 				margin: '3px 0'
 			}).end();
-			console.log(this);
-			console.log(this.attr("id"));
-			$(this).append(button);
-			$('body').append(switcherpane);
+			
+			console.log(button);
+			console.log(switcherpane);
+			
+			button.appendTo(this);
+			switcherpane.appendTo('body');
+			
 			switcherpane.hide();
 			if(Cookies !== null){
 				if( Cookies.get(options.cookieName) || options.loadTheme ){
