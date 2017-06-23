@@ -1,7 +1,7 @@
 /* jQuery plugin themeswitcher
 ---------------------------------------------------------------------*/
 (function($, undefined) {
-	$.themeswitcher = { "version":"2.0.39" };
+	$.themeswitcher = { "version":"2.0.40" };
 	Object.freeze($.themeswitcher);
 
 	$.fn.themeswitcher = function(settings){
@@ -35,7 +35,7 @@
 			}
 			
 			//MARKUP
-			var button = $('<a href="#" class="jquery-ui-themeswitcher-trigger"><span class="jquery-ui-themeswitcher-icon"></span><span class="jquery-ui-themeswitcher-title">'+ options.initialText +'</span></a>'),
+			var button = $('<a href="#" class="ui-button ui-corner-all ui-widget jquery-ui-themeswitcher-trigger"><span class="jquery-ui-themeswitcher-icon"></span><span class="jquery-ui-themeswitcher-title">'+ options.initialText +'</span></a>'),
 			    ui_themes = [
 				{"themeName":"Base",
 				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/base/jquery-ui.css",
@@ -171,39 +171,8 @@
 
 			/* Inline CSS 
 			---------------------------------------------------------------------*/
-			var button_default = {
-				fontFamily: 'Trebuchet MS, Verdana, sans-serif',
-				fontSize: '11px',
-				color: '#666',
-				background: 'linear-gradient(to bottom, #f2f2f2 7%,#7f848c 100%)',
-				border: '1px solid #ccc',
-				'-moz-border-radius': '6px',
-				'-webkit-border-radius': '6px',
-				textDecoration: 'none',
-				padding: '3px 3px 3px 8px',
-				width: options.width - 11,//minus must match left and right padding 
-				display: 'block',
-				height: options.buttonHeight,
-				outline: '0'
-			},
-			    button_hover = {
-				'borderColor':'#bbb',
-				'background': '#f0f0f0',
-				cursor: 'pointer',
-				color: '#444'
-			},
-			    button_active = {
-				color: '#aaa',
-				background: '#000',
-				border: '1px solid #ccc',
-				borderBottom: 0,
-				'-moz-border-radius-bottomleft': 0,
-				'-webkit-border-bottom-left-radius': 0,
-				'-moz-border-radius-bottomright': 0,
-				'-webkit-border-bottom-right-radius': 0,
-				outline: '0'
-			};
 
+			/*
 			//button css
 			button.css(button_default)
 			.hover(
@@ -220,6 +189,7 @@
 				height: '16px',
 				background: 'url(data:image/gif;base64,R0lGODlhBQADAIABAI+Pj////yH5BAEAAAEALAAAAAAFAAMAAAIFhB0XC1sAOw==) 50% 50% no-repeat'
 			});	
+			*/
 			//pane css
 			switcherpane.css({
 				position: 'absolute',
