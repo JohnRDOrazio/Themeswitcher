@@ -16,3 +16,5 @@ When [js-cookie](https://github.com/js-cookie/js-cookie/blob/latest/src/js.cooki
 
 Any other ideas for bettering this very useful plugin are welcome! And I hope it does make its way to jquery-ui core, 
 or at least have some sort of presence on their repository...
+
+[See it live here](https://johnrdorazio.github.io/Themeswitcher/ "JohnRDOrazio Themeswitcher")
