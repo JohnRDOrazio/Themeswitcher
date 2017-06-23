@@ -30,7 +30,7 @@
     jQuery(document).ready(function( $ ) {
       $("#themeswitcher").themeswitcher({"loadTheme":"Humanity"});
       $("input[type=radio], input[type=checkbox]").checkboxradio();
-      $("input[type=date]").datepicker();
+      $(".datepicker").datepicker();
       $(".jqbutton").button();
       $(".buttonset").buttonset();
     });
@@ -41,7 +41,7 @@
   <div id="themeswitcher"></div>
   <table>
     <tr><td>jQuery UI Datepicker</td>
-      <td><label for="date-1"><input type="date" name="date-1" id="date-1" value="23/03/1979" /></label></td>
+      <td><div class="datepicker"></div></td>
     </tr>
     <tr><td>jQuery UI Button</td><td><button class="jqbutton">I am button</button></td></tr>
     <tr><td>jQuery UI Buttonset</td><td><div class="buttonset"><button>Button 1</button><button>Button 2</button></div></td></tr>
