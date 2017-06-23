@@ -1,7 +1,7 @@
 /* jQuery plugin themeswitcher
 ---------------------------------------------------------------------*/
 (function($, undefined) {
-	$.themeswitcher = { "version":"2.0.49" };
+	$.themeswitcher = { "version":"2.0.50" };
 	Object.freeze($.themeswitcher);
 
 	$.fn.themeswitcher = function(settings){
@@ -149,7 +149,7 @@
 			);
 			*/
 			//show/hide panel functions
-			$.fn.spShow = function(){ $(this).css({top: button.offset().top + button.height(), left: button.offset().left, width: button.width() }).slideDown(50); /*button.css(button_active);*/ options.onOpen(); }
+			$.fn.spShow = function(){ $(this).css({top: button.offset().top + button.outerHeight(), left: button.offset().left, width: button.outerWidth() }).slideDown(50); /*button.css(button_active);*/ options.onOpen(); }
 			$.fn.spHide = function(){ $(this).slideUp(50, function(){options.onClose();}); /*button.css(button_default);*/ }
 
 
@@ -162,7 +162,10 @@
 				button.button('option', 'label', options.buttonPreText + themeName);
 				if(typeof Cookies !== 'undefined'){ Cookies.set(options.cookieName, themeName); }
 				options.onSelect();
-				if(options.closeOnSelect && switcherpane.is(':visible')){ switcherpane.spHide(); }
+				if(options.closeOnSelect && switcherpane.is(':visible')){ 
+					switcherpane.spHide(); 
+					button.button("option","icon","ui-icon-caret-1-s");
+				}
 				return false;
 			});
 
@@ -211,7 +214,7 @@
 				borderRadius: '6px',
 				borderTop: 0,
 				zIndex: 999999,
-				width: button.parent().width()
+				width: button.outerWidth()
 			})
 			.find('ul').css({
 				listStyle: 'none',
@@ -237,29 +240,27 @@
 					}); 
 				}
 			).css({
-				width: button.parent().width() - 30,
+				width: button.outerWidth() - 30,
 				height: '',
 				padding: '2px',
 				margin: '1px',
 				border: '1px solid #111',
 				borderRadius: '4px',
-				clear: 'left',
-				float: 'left'
+				display: 'block'
 			}).end()
 			.find('a').css({
 				color: '#aaa',
 				textDecoration: 'none',
-				float: 'left',
-				width: '100%',
+				display: 'block',
 				outline: '0'
 			}).end()
 			.find('img').css({
-				float: 'left',
+				display: 'inline-block',
 				border: '1px solid #333',
 				margin: '0 2px'
 			}).end()
 			.find('.themeName').css({
-				float: 'left',
+				display: 'inline-block',
 				margin: '3px 0'
 			}).end();
 			
