@@ -18,98 +18,106 @@
 				closeOnSelect: true,
 				buttonHeight: 14,
 				cookieName: 'jquery-ui-theme',
+				jqueryUiVersion: '1.12.1',
 				onOpen: function(){},
 				onClose: function(){},
 				onSelect: function(){}
 			}, settings);
-
+			
+			var availableUiVersions = ["1.12.1", "1.12.0", "1.11.4", "1.11.3", "1.11.2", "1.11.1", "1.11.0", "1.10.4", "1.10.3", "1.10.2", "1.10.1", "1.10.0", "1.9.2", "1.9.1", "1.9.0", "1.8.24", "1.8.23", "1.8.22", "1.8.21", "1.8.20", "1.8.19", "1.8.18", "1.8.17", "1.8.16", "1.8.15", "1.8.14", "1.8.13", "1.8.12", "1.8.11", "1.8.10", "1.8.9", "1.8.8", "1.8.7", "1.8.6", "1.8.5", "1.8.4", "1.8.2", "1.8.1", "1.8.0", "1.7.3", "1.7.2", "1.7.1", "1.7.0", "1.6.0", "1.5.3", "1.5.2"];
+			if(availableUiVersions.indexOf(options.jqueryUiVersion) === -1){
+				options.jqueryUiVersion = availableUiVersions[0];
+			}
+			
 			//MARKUP
 			var button = $('<a href="#" class="jquery-ui-themeswitcher-trigger"><span class="jquery-ui-themeswitcher-icon"></span><span class="jquery-ui-themeswitcher-title">'+ options.initialText +'</span></a>'),
 			    ui_themes = [
 				{"themeName":"Base",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/base/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_smoothness.png"},
 				{"themeName":"Black Tie",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/black-tie/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/black-tie/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_black_tie.png"},
 				{"themeName":"Blitzer",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/blitzer/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/blitzer/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_blitzer.png"},
 				{"themeName":"Cupertino",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/cupertino/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/cupertino/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_cupertino.png"},
 				{"themeName":"Dark Hive",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/dark-hive/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/dark-hive/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_dark_hive.png"},
 				{"themeName":"Dot Luv",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/dot-luv/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/dot-luv/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_dot_luv.png"},
 				{"themeName":"Eggplant",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/eggplant/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/eggplant/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_eggplant.png"},
 				{"themeName":"Excite Bike",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/excite-bike/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/excite-bike/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_excite_bike.png"},
 				{"themeName":"Flick",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/flick/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_flick.png"},
 				{"themeName":"Hot Sneaks",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/hot-sneaks/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/hot-sneaks/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_hot_sneaks.png"},
 				{"themeName":"Humanity",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/humanity/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/humanity/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_humanity.png"},
 				{"themeName":"Le Frog",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/le-frog/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/le-frog/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_le_frog.png"},
 				{"themeName":"Mint Choc",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/mint-choc/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/mint-choc/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_mint_choco.png"},
 				{"themeName":"Overcast",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/overcast/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/overcast/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_overcast.png"},
 				{"themeName":"Pepper Grinder",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/pepper-grinder/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/pepper-grinder/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_pepper_grinder.png"},
 				{"themeName":"Redmond",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/redmond/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_windoze.png"},
 				{"themeName":"Smoothness",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/smoothness/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_smoothness.png"},
 				{"themeName":"South Street",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/south-street/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/south-street/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_south_street.png"},
 				{"themeName":"Start",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/start/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/start/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_start_menu.png"},
 				{"themeName":"Sunny",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/sunny/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/sunny/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_sunny.png"},
 				{"themeName":"Swanky Purse",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/swanky-purse/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/swanky-purse/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_swanky_purse.png"},
 				{"themeName":"Trontastic",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/trontastic/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/trontastic/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_trontastic.png"},
 				{"themeName":"UI Darkness",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-darkness/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/ui-darkness/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_ui_dark.png"},
 				{"themeName":"UI Lightness",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/ui-lightness/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_ui_light.png"},
 				{"themeName":"Vader",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/vader/jquery-ui.css",
+				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/vader/jquery-ui.css",
 				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_black_matte.png"}
-			],
+			    ],
 			    ul_string = '<div class="jquery-ui-themeswitcher"><div class="themeGallery"><ul>';
+			
+			//automatically build ul contents using ui_themes array
+			for(var i=0;i<ui_themes.length;i++){
+				ul_string += '<li><a href="'+ui_themes[i].url+'">';
+				ul_string += '<img src="'+ui_themes[i].thumb+'" alt="'+ui_themes[i].themeName+'" title="'+ui_themes[i].themeName+'" />';
+				ul_string += '<span class="themeName">'+ui_themes[i].themeName+'</span></a></li>';  
+			}
 
-				for(var i=0;i<ui_themes.length;i++){
-					ul_string += '<li><a href="'+ui_themes[i].url+'">';
-					ul_string += '<img src="'+ui_themes[i].thumb+'" alt="'+ui_themes[i].themeName+'" title="'+ui_themes[i].themeName+'" />';
-					ul_string += '<span class="themeName">'+ui_themes[i].themeName+'</span></a></li>';  
-				}
-				ul_string += '</ul></div></div>';
+			ul_string += '</ul></div></div>';
 
 			var switcherpane = $(ul_string).find('div.themeGallery');
 
