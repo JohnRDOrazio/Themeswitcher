@@ -1,7 +1,7 @@
 /* jQuery plugin themeswitcher
 ---------------------------------------------------------------------*/
 (function($, undefined) {
-	$.themeswitcher = { "version":"2.0.48" };
+	$.themeswitcher = { "version":"2.0.49" };
 	Object.freeze($.themeswitcher);
 
 	$.fn.themeswitcher = function(settings){
@@ -124,7 +124,7 @@
 
 			ul_string += '</ul></div></div>';
 
-			var switcherpane = $(ul_string);
+			var switcherpane = $(ul_string).find('div.themeGallery');
 
 			//button events
 			button.click(
@@ -211,7 +211,7 @@
 				borderRadius: '6px',
 				borderTop: 0,
 				zIndex: 999999,
-				width: button.width()//minus must match left and right padding*/
+				width: button.parent().width()
 			})
 			.find('ul').css({
 				listStyle: 'none',
@@ -237,7 +237,7 @@
 					}); 
 				}
 			).css({
-				width: button.width() - 30,
+				width: button.parent().width() - 30,
 				height: '',
 				padding: '2px',
 				margin: '1px',
