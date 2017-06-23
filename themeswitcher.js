@@ -275,12 +275,21 @@
 		$(this).append(button);
 		$('body').append(switcherpane);
 		switcherpane.hide();
-		if( $.cookie(options.cookieName) || options.loadTheme ){
-			var themeName = $.cookie(options.cookieName) || options.loadTheme;
-			mylink = switcherpane.find('a:contains('+ themeName +')');
-			updateCSS( $(mylink).attr('href') );
-			button.find('.jquery-ui-themeswitcher-title').text( options.buttonPreText + themeName );
-			$.cookie(options.cookieName, themeName);
+		if(Cookies !== null){
+			if( Cookies.get(options.cookieName) || options.loadTheme ){
+				var themeName = Cookies.get(options.cookieName) || options.loadTheme;
+				mylink = switcherpane.find('a:contains('+ themeName +')');
+				updateCSS( $(mylink).attr('href') );
+				button.find('.jquery-ui-themeswitcher-title').text( options.buttonPreText + themeName );
+				Cookies.set(options.cookieName, themeName);
+			}
+		}else{
+			if( options.loadTheme ){
+				var themeName = options.loadTheme;
+				mylink = switcherpane.find('a:contains('+ themeName +')');
+				updateCSS( $(mylink).attr('href') );
+				button.find('.jquery-ui-themeswitcher-title').text( options.buttonPreText + themeName );
+			}		
 		}
 	};
 	return this;
