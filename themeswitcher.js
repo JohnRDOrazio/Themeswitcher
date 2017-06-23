@@ -1,7 +1,7 @@
 /* jQuery plugin themeswitcher
 ---------------------------------------------------------------------*/
 (function($, undefined) {
-	$.themeswitcher = { "version":"2.0.54" };
+	$.themeswitcher = { "version":"2.0.55" };
 	Object.freeze($.themeswitcher);
 
 	$.fn.themeswitcher = function(settings){
@@ -156,7 +156,7 @@
 				$(this).css({
 					top: button.offset().top + button.outerHeight(), 
 					left: button.offset().left, 
-					width: button.outerWidth()-(window.innerWidth-$(window).width()-1)
+					width: button.outerWidth()-(window.innerWidth-Math.round($(window).width()/2))
 				}).slideDown(50); /*button.css(button_active);*/ 
 				
 				options.onOpen(); 
