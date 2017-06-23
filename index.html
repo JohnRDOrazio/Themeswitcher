@@ -30,6 +30,9 @@
     jQuery(document).ready(function( $ ) {
       $("#themeswitcher").themeswitcher({"loadTheme":"Humanity"});
       $("input[type=radio], input[type=checkbox]").checkboxradio();
+      $("input[type=date]").datepicker();
+      $(".jqbutton").button();
+      $(".buttonset").buttonset();
     });
   </script>
 </head>
@@ -37,9 +40,11 @@
   <h1>John R. D'Orazio's version of the jQuery Themeswitcher</h1>
   <div id="themeswitcher"></div>
   <table>
-    <tr><td>jQuery UI Datepicker</td><td></td></tr>
-    <tr><td>jQuery UI Button</td><td></td></tr>
-    <tr><td>jQuery UI Buttonset</td><td></td></tr>
+    <tr><td>jQuery UI Datepicker</td>
+      <td><label for="date-1"><input type="date" name="date-1" id="date-1" /></label></td>
+    </tr>
+    <tr><td>jQuery UI Button</td><td><button class="jqbutton">I am button</button></td></tr>
+    <tr><td>jQuery UI Buttonset</td><td><div class="buttonset"><button>Button 1</button><button>Button 2</button></div></td></tr>
     <tr><td>jQuery UI Checkboxradio Radio Group</td>
         <td><fieldset>
           <legend>Select a Location: </legend>
