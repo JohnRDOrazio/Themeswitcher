@@ -1,7 +1,7 @@
 /* jQuery plugin themeswitcher
 ---------------------------------------------------------------------*/
 (function($, undefined) {
-	$.themeswitcher = { "version":"2.0.47" };
+	$.themeswitcher = { "version":"2.0.48" };
 	Object.freeze($.themeswitcher);
 
 	$.fn.themeswitcher = function(settings){
@@ -219,7 +219,7 @@
 				padding: '0',
 				overflow: 'auto',
 				overflowX: 'hidden', // NEW
-				height: '500px'
+				height: '300px'
 			}).end()
 			.find('li').hover(
 				function(){ 
@@ -238,7 +238,7 @@
 				}
 			).css({
 				width: button.width() - 30,
-				height: button.height(),
+				height: '',
 				padding: '2px',
 				margin: '1px',
 				border: '1px solid #111',
