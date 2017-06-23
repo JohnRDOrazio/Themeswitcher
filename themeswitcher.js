@@ -1,7 +1,7 @@
 /* jQuery plugin themeswitcher
 ---------------------------------------------------------------------*/
 (function($, undefined) {
-	$.themeswitcher = { "version":"2.0.40" };
+	$.themeswitcher = { "version":"2.0.41" };
 	Object.freeze($.themeswitcher);
 
 	$.fn.themeswitcher = function(settings){
@@ -35,7 +35,7 @@
 			}
 			
 			//MARKUP
-			var button = $('<a href="#" class="ui-button ui-corner-all ui-widget jquery-ui-themeswitcher-trigger"><span class="jquery-ui-themeswitcher-icon"></span><span class="jquery-ui-themeswitcher-title">'+ options.initialText +'</span></a>'),
+			var button = $('<a href="#" class="jquery-ui-themeswitcher-trigger"><span class="jquery-ui-themeswitcher-icon"></span><span class="jquery-ui-themeswitcher-title">'+ options.initialText +'</span></a>').button(),
 			    ui_themes = [
 				{"themeName":"Base",
 				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/base/jquery-ui.css",
@@ -143,7 +143,7 @@
 
 			//show/hide panel functions
 			$.fn.spShow = function(){ $(this).css({top: button.offset().top + options.buttonHeight + 6, left: button.offset().left}).slideDown(50); button.css(button_active); options.onOpen(); }
-			$.fn.spHide = function(){ $(this).slideUp(50, function(){options.onClose();}); button.css(button_default); }
+			$.fn.spHide = function(){ $(this).slideUp(50, function(){options.onClose();}); /*button.css(button_default);*/ }
 
 
 			/* Theme Loading
