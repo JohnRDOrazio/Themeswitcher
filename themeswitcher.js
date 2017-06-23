@@ -1,7 +1,7 @@
 /* jQuery plugin themeswitcher
 ---------------------------------------------------------------------*/
 (function($, undefined) {
-	$.themeswitcher = { "version":"2.0.56" };
+	$.themeswitcher = { "version":"2.0.57" };
 	Object.freeze($.themeswitcher);
 
 	$.fn.themeswitcher = function(settings){
@@ -156,7 +156,7 @@
 				$(this).css({
 					top: button.offset().top + button.outerHeight(), 
 					left: button.offset().left, 
-					width: button.outerWidth() - Math.ceil( (window.innerWidth - $(window).width()) / 2 ) + 1
+					width: button.outerWidth() - Math.ceil( (window.innerWidth - $(window).width()) / 2 ) + 2 //this last 2 is to account for border-width, I think. seem to work...
 				}).slideDown(50); /*button.css(button_active);*/ 
 				
 				options.onOpen(); 
