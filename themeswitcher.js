@@ -124,7 +124,7 @@
 
 			ul_string += '</ul></div></div>';
 
-			var switcherpane = $(ul_string).find('div.themeGallery');
+			var switcherpane = $(ul_string);
 
 			//button events
 			button.click(
@@ -201,7 +201,7 @@
 			//pane css
 			switcherpane.css({
 				position: 'absolute',
-				float: 'left',
+				/* float: 'left', */
 				fontFamily: 'Trebuchet MS, Verdana, sans-serif',
 				fontSize: '12px',
 				background: '#000',
@@ -213,8 +213,8 @@
 				'-moz-border-radius-bottomright': '6px',
 				'-webkit-border-bottom-right-radius': '6px',
 				borderTop: 0,
-				zIndex: 999999/*,
-				width: options.width-6//minus must match left and right padding*/
+				zIndex: 999999,
+				width: button.width()-6//minus must match left and right padding*/
 			})
 			.find('ul').css({
 				listStyle: 'none',
