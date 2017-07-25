@@ -27,7 +27,7 @@ Any other ideas for bettering this very useful plugin are welcome!
 
 <tr class="option">
 <th>loadTheme</th>
-<td class="type"><a href="http://types/#&lt;a href='../../Types.html#String'&gt;String&lt;/a&gt;" title="/Types"></a><a href="../../Types.html#String">String</a></td>
+<td class="type"><a href="https://api.jquery.com/Types/#String">String</a></td>
 <td class="default"><b>Default:</b> <span>null</span></td>
 </tr>
 <tr><td class="desc" colspan="3">
@@ -37,7 +37,7 @@ Any other ideas for bettering this very useful plugin are welcome!
 
 <tr class="option">
 <th>jqueryUiVersion</th>
-<td class="type"><a href="http://types/#&lt;a href='../../Types.html#String'&gt;String&lt;/a&gt;" title="/Types"></a><a href="../../Types.html#String">String</a></td>
+<td class="type"><a href="https://api.jquery.com/Types/#String">String</a></td>
 <td class="default"><b>Default:</b> <span>'1.12.1'</span></td>
 </tr>
 <tr><td class="desc" colspan="3">
@@ -48,7 +48,7 @@ Any other ideas for bettering this very useful plugin are welcome!
 <!--
 <tr class="option">
 <th>height</th>
-<td class="type"><a href="http://types/#&lt;a href='../../Types.html#Number'&gt;Number&lt;/a&gt;" title="/Types"></a><a href="../../Types.html#Number">Number</a></td>
+<td class="type"><a href="https://api.jquery.com/Types/#Number">Number</a></td>
 <td class="default"><b>Default:</b> <span>200</span></td>
 </tr>
 <tr><td class="desc" colspan="3">
@@ -59,7 +59,7 @@ Any other ideas for bettering this very useful plugin are welcome!
 <!--
 <tr class="option">
 <th>width</th>
-<td class="type"><a href="http://types/#&lt;a href='../../Types.html#Number'&gt;Number&lt;/a&gt;" title="/Types"></a><a href="../../Types.html#Number">Number</a></td>
+<td class="type"><a href="https://api.jquery.com/Types/#Number">Number</a></td>
 <td class="default"><b>Default:</b> <span>150</span></td>
 </tr>
 <tr><td class="desc" colspan="3">
@@ -70,7 +70,7 @@ Any other ideas for bettering this very useful plugin are welcome!
 
 <tr class="option">
 <th>initialText</th>
-<td class="type"><a href="http://types/#&lt;a href='../../Types.html#String'&gt;String&lt;/a&gt;" title="/Types"></a><a href="../../Types.html#String">String</a></td>
+<td class="type"><a href="https://api.jquery.com/Types/#String">String</a></td>
 <td class="default"><b>Default:</b> <span>'Switch Theme'</span></td>
 </tr>
 <tr><td class="desc" colspan="3">
@@ -80,7 +80,7 @@ Any other ideas for bettering this very useful plugin are welcome!
 
 <tr class="option">
 <th>buttonPreText</th>
-<td class="type"><a href="http://types/#&lt;a href='../../Types.html#String'&gt;String&lt;/a&gt;" title="/Types"></a><a href="../../Types.html#String">String</a></td>
+<td class="type"><a href="https://api.jquery.com/Types/#String">String</a></td>
 <td class="default"><b>Default:</b> <span>'Theme: '</span></td>
 </tr>
 <tr><td class="desc" colspan="3">
@@ -90,7 +90,7 @@ Any other ideas for bettering this very useful plugin are welcome!
 
 <tr class="option">
 <th>closeOnSelect</th>
-<td class="type"><a href="http://types/#&lt;a href='../../Types.html#Boolean'&gt;Boolean&lt;/a&gt;" title="/Types"></a><a href="../../Types.html#Boolean">Boolean</a></td>
+<td class="type"><a href="https://api.jquery.com/Types/#Boolean">Boolean</a></td>
 <td class="default"><b>Default:</b> <span>true</span></td>
 </tr>
 <tr><td class="desc" colspan="3">
@@ -100,7 +100,7 @@ Any other ideas for bettering this very useful plugin are welcome!
 <!--
 <tr class="option">
 <th>buttonHeight</th>
-<td class="type"><a href="http://types/#&lt;a href='../../Types.html#Number'&gt;Number&lt;/a&gt;" title="/Types"></a><a href="../../Types.html#Number">Number</a></td>
+<td class="type"><a href="https://api.jquery.com/Types/#Number">Number</a></td>
 <td class="default"><b>Default:</b> <span>14</span></td>
 </tr>
 <tr><td class="desc" colspan="3">
@@ -110,7 +110,7 @@ Any other ideas for bettering this very useful plugin are welcome!
 -->
 <tr class="option">
 <th>cookieName</th>
-<td class="type"><a href="http://types/#&lt;a href='../../Types.html#String'&gt;String&lt;/a&gt;" title="/Types"></a><a href="../../Types.html#String">String</a></td>
+<td class="type"><a href="https://api.jquery.com/Types/#String">String</a></td>
 <td class="default"><b>Default:</b> <span>'jquery-ui-theme'</span></td>
 </tr>
 <tr><td class="desc" colspan="3">
@@ -121,7 +121,7 @@ Any other ideas for bettering this very useful plugin are welcome!
 
 <tr class="option">
 <th>onOpen</th>
-<td class="type"><a href="http://types/#&lt;a href='../../Types.html#Function'&gt;Function&lt;/a&gt;" title="/Types"></a><a href="../../Types.html#Function">Function</a></td>
+<td class="type"><a href="https://api.jquery.com/Types/#Function">Function</a></td>
 <td class="default"><b>Default:</b> <span>null</span></td>
 </tr>
 <tr><td class="desc" colspan="3">
@@ -132,7 +132,7 @@ Any other ideas for bettering this very useful plugin are welcome!
 
 <tr class="option">
 <th>onClose</th>
-<td class="type"><a href="http://types/#&lt;a href='../../Types.html#Function'&gt;Function&lt;/a&gt;" title="/Types"></a><a href="../../Types.html#Function">Function</a></td>
+<td class="type"><a href="https://api.jquery.com/Types/#Function">Function</a></td>
 <td class="default"><b>Default:</b> <span>null</span></td>
 </tr>
 <tr><td class="desc" colspan="3">
@@ -142,7 +142,7 @@ Any other ideas for bettering this very useful plugin are welcome!
 
 <tr class="option">
 <th>onSelect</th>
-<td class="type"><a href="http://types/#&lt;a href='../../Types.html#Function'&gt;Function&lt;/a&gt;" title="/Types"></a><a href="../../Types.html#Function">Function</a></td>
+<td class="type"><a href="https://api.jquery.com/Types/#Function">Function</a></td>
 <td class="default"><b>Default:</b> <span>null</span></td>
 </tr>
 <tr><td class="desc" colspan="3">
