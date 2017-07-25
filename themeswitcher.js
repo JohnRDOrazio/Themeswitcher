@@ -1,5 +1,8 @@
-/* jQuery plugin themeswitcher
+/* jQuery UI ThemeSwitcher widget
+ * Rewritten from jQuery ThemeSwitcher Demo that used to be found at (http://jqueryui.com/docs/Theming/ThemeSwitcher)
+ * Rewrite by John R. D'Orazio <priest@johnromanodorazio.com>
 ---------------------------------------------------------------------*/
+
 (function($, undefined) {
 	$.themeswitcher = { "version":"2.0.57" };
 	Object.freeze($.themeswitcher);
