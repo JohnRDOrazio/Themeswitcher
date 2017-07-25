@@ -23,7 +23,7 @@
 				buttonPreText: 'Theme: ',
 				closeOnSelect: true,
 				cookieName: 'jquery-ui-theme',
-				jqueryUiVersion: '1.12.1',
+				jqueryUiVersion: $.ui.version,
 				onOpen: function(){},
 				onClose: function(){},
 				onSelect: function(){}
