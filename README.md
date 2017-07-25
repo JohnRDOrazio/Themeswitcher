@@ -4,8 +4,8 @@ So users started downloading it locally.
 This gave me the opportunity to look at the code more closely.
 Changes I decided to make:
 
-* instead of creating the ul list with the jquery-ui themes with a single string, 
-  I decided to construct an object that is then iterated to create the string with the ul list. 
+* instead of creating the html markup for the list of jquery-ui themes with a single string, 
+  I decided to construct an object that will then be iterated over in order to build the string for the ul list markup. 
   This way it is much easier to add / subtract themes from the list.
 * I didn't like the loadTheme option triggering a click on the ul list and subsequently calling the onselect callback. 
   So I made a couple simple modifications to the cookie read / loadTheme option behaviour, 
@@ -14,8 +14,7 @@ Changes I decided to make:
 
 When [js-cookie](https://github.com/js-cookie/js-cookie/blob/latest/src/js.cookie.js "Javascript Cookie") is available the plugin utilizes it to save and load the most recently chosen theme.
 
-Any other ideas for bettering this very useful plugin are welcome! And I hope it does make its way to jquery-ui core, 
-or at least have some sort of presence on their repository...
+Any other ideas for bettering this very useful plugin are welcome!
 
 [See it live here](https://johnrdorazio.github.io/Themeswitcher/ "JohnRDOrazio Themeswitcher")
 
