@@ -1,7 +1,10 @@
-/* jQuery plugin themeswitcher
+/* jQuery UI ThemeSwitcher widget
+ * Rewritten from jQuery ThemeSwitcher Demo that used to be found at (http://jqueryui.com/docs/Theming/ThemeSwitcher)
+ * Rewrite by John R. D'Orazio <priest@johnromanodorazio.com>
 ---------------------------------------------------------------------*/
+
 (function($, undefined) {
-	$.themeswitcher = { "version":"2.0.57" };
+	$.themeswitcher = { "version":"2.0.59" };
 	Object.freeze($.themeswitcher);
 
 	$.fn.themeswitcher = function(settings){
@@ -20,7 +23,7 @@
 				buttonPreText: 'Theme: ',
 				closeOnSelect: true,
 				cookieName: 'jquery-ui-theme',
-				jqueryUiVersion: '1.12.1',
+				jqueryUiVersion: ($.ui && $.ui.version ? $.ui.version : '1.12.1'),
 				onOpen: function(){},
 				onClose: function(){},
 				onSelect: function(){}
