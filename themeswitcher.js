@@ -147,7 +147,6 @@
 				let span		= `<span class="themeName">${themeName}</span>`
 				let liCloseTag		= `</a></li>`;
 				let html		= `${liOpenTag}${imgTag}${span}${liCloseTag}`;
-				console.log(html);
 				return html;
 			}
 			const buttonMarkup = `<a href="#" class="jquery-ui-themeswitcher-trigger" style="min-width: 250px;" title="${options.initialText}">${options.initialText}</a>`;
