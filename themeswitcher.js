@@ -4,7 +4,7 @@
 ---------------------------------------------------------------------*/
 
 (function($, undefined) {
-	$.themeswitcher = { "version":"2.0.61" };
+	$.themeswitcher = { "version":"2.0.62" };
 	Object.freeze($.themeswitcher);
 
 	$.fn.themeswitcher = function(settings){
@@ -23,7 +23,7 @@
 				onClose: function(){},
 				onSelect: function(){}
 			}, settings);
-			
+
 			const availableUiVersions = ["1.13.2", "1.13.1", "1.13.0", "1.12.1", "1.12.0", "1.11.4", "1.11.3", "1.11.2", "1.11.1", "1.11.0", "1.10.4", "1.10.3", "1.10.2", "1.10.1", "1.10.0", "1.9.2", "1.9.1", "1.9.0", "1.8.24", "1.8.23", "1.8.22", "1.8.21", "1.8.20", "1.8.19", "1.8.18", "1.8.17", "1.8.16", "1.8.15", "1.8.14", "1.8.13", "1.8.12", "1.8.11", "1.8.10", "1.8.9", "1.8.8", "1.8.7", "1.8.6", "1.8.5", "1.8.4", "1.8.2", "1.8.1", "1.8.0", "1.7.3", "1.7.2", "1.7.1", "1.7.0", "1.6.0", "1.5.3", "1.5.2"];
 			if(false === availableUiVersions.includes(options.jqueryUiVersion)){
 				options.jqueryUiVersion = availableUiVersions[0];
@@ -139,102 +139,94 @@
 			//MARKUP
 			const getThemeMarkup = (idx) => {
 				let theme		= themes[idx];
-				let themeName 		= themeLookupTable[theme].themeName;
+				let themeName		= themeLookupTable[theme].themeName;
 				let url			= getThemeUrl(theme);
 				let thumb		= getThumbUrl(theme);
-				return `<li><a href="${url}">
-						<img src="${thumb}" alt="${themeName}" title="${themeName}" />
-						<span class="themeName">${themeName}</span></a>
-						</li>`;
+				let liOpenTag		= `<li><a href="${url}">`;
+				let imgTag		= `<img src="${thumb}" alt="${themeName}" title="${themeName}" />`;
+				let span		= `<span class="themeName">${themeName}</span>`
+				let liCloseTag		= `</a></li>`;
+				let html		= `${liOpenTag}${imgTag}${span}${liCloseTag}`;
+				return html;
 			}
-			let button = $('<a href="#" class="jquery-ui-themeswitcher-trigger" style="min-width: 250px;" title="'+ options.initialText +'">'+ options.initialText +'</a>').button({
+			const buttonMarkup = `<a href="#" class="jquery-ui-themeswitcher-trigger" style="min-width: 250px;" title="${options.initialText}">${options.initialText}</a>`;
+			let $button = $(buttonMarkup).button({
 				icon: "ui-icon-caret-1-s",
 				iconPosition: "end"
 			}),
-				ul_string_start = '<div class="jquery-ui-themeswitcher"><div class="themeGallery"><ul>',
-				ul_string_end = '</ul></div></div>',
-				ul_string_contents;
+			ul_string_start = '<div class="jquery-ui-themeswitcher"><div class="themeGallery"><ul>',
+			ul_string_end = '</ul></div></div>',
+			ul_string_contents = '';
 
 			//automatically build ul contents using themeLookupTable
-			for(let i = 0; i < Object.keys(themeLookupTable).length; i++) {
+			for(let i = 0; i < themes.length; i++) {
 				ul_string_contents += getThemeMarkup(i);
 			}
 
-			let ul_string = `${ul_string_start}${ul_string_contents}${ul_string_end}`,
-			    switcherpane = $(ul_string).find('div.themeGallery');
+			let ul_string		= `${ul_string_start}${ul_string_contents}${ul_string_end}`,
+			    $switcherpane	= $(ul_string).find('div.themeGallery');
 
 			//button events
-			button.click(
-				function(){
-					if(switcherpane.is(':visible')){
-						button.button("option", "icon", "ui-icon-caret-1-s");
-						button.removeClass("ui-corner-top").addClass("ui-corner-all");
-						switcherpane.spHide();
-					}
-					else{ 
-						button.button("option", "icon", "ui-icon-caret-1-n");
-						button.removeClass("ui-corner-all").addClass("ui-corner-top");
-						switcherpane.spShow(); 
-					}
-					return false;
+			$button.on('click', () => {
+				if($switcherpane.is(':visible')){
+					$button.button("option", "icon", "ui-icon-caret-1-s");
+					$button.removeClass("ui-corner-top").addClass("ui-corner-all");
+					$switcherpane.spHide();
 				}
-			);
+				else{ 
+					$button.button("option", "icon", "ui-icon-caret-1-n");
+					$button.removeClass("ui-corner-all").addClass("ui-corner-top");
+					$switcherpane.spShow(); 
+				}
+				return false;
+			});
 
-			/*
-			//menu events (mouseout didn't work...)
-			switcherpane.hover(
-				function(){},
-				function(){ if(switcherpane.is(':visible')){$(this).spHide();} }
-			);
-			*/
-			//show/hide panel functions
-			$.fn.spShow = function(){ 
-				
+			//show/hide panel
+			$.fn.spShow = function() {
 				$(this).css({
-					top: button.offset().top + button.outerHeight(), 
-					left: button.offset().left, 
-					width: button.outerWidth() - Math.ceil( (window.innerWidth - $(window).width()) / 2 ) + 2 //this last 2 is to account for border-width, I think. seem to work...
-				}).slideDown(50); /*button.css(button_active);*/ 
-				
+					top: $button.offset().top + $button.outerHeight(), 
+					left: $button.offset().left, 
+					width: $button.outerWidth() - Math.ceil( (window.innerWidth - $(window).width()) / 2 ) + 2 //this last 2 is to account for border-width, I think. seem to work...
+				}).slideDown(50); 
 				options.onOpen(); 
 			}
-			$.fn.spHide = function(){ 
-				
-				$(this).slideUp(50, function(){options.onClose();}); /*button.css(button_default);*/ }
+
+			$.fn.spHide = function() {
+				$(this).slideUp(50, function(){ options.onClose(); });
+			}
 
 
 			/* Theme Loading
 			---------------------------------------------------------------------*/
-			switcherpane.find('a').click(function(){
+			$switcherpane.find('a').on('click', function() {
 				updateCSS( $(this).attr('href') );
-				var themeName = $(this).find('span').text();
-				//button.find('.jquery-ui-themeswitcher-title').text( options.buttonPreText + themeName );
-				button.button('option', 'label', options.buttonPreText + themeName);
+				let themeName = $(this).find('span').text();
+				$button.button('option', 'label', options.buttonPreText + themeName);
 				if(typeof Cookies !== 'undefined'){ Cookies.set(options.cookieName, themeName); }
 				options.onSelect();
-				if(options.closeOnSelect && switcherpane.is(':visible')){ 
-					switcherpane.spHide(); 
-					button.button("option","icon","ui-icon-caret-1-s");
-					button.removeClass("ui-corner-top").addClass("ui-corner-all");
+				if(options.closeOnSelect && $switcherpane.is(':visible')) {
+					$switcherpane.spHide(); 
+					$button.button("option", "icon", "ui-icon-caret-1-s");
+					$button.removeClass("ui-corner-top").addClass("ui-corner-all");
 				}
 				return false;
 			});
 
 			//function to append a new theme stylesheet with the new style changes
-			var updateCSS = function(locStr){
-				var cssLink = $('<link href="'+locStr+'" type="text/css" rel="Stylesheet" class="ui-theme" />');
-				cssLink.appendTo('head');
+			const updateCSS = (locStr) => {
+				let $cssLink = $(`<link href="${locStr}" type="text/css" rel="stylesheet" class="ui-theme" />`);
+				$cssLink.appendTo('head');
 
-				//try never to have more than 3 stylesheets loaded at a time
-				if( $("link.ui-theme").size() > 3){
+				//try never to have more than 1 stylesheet loaded at a time
+				if( $("link.ui-theme").size() > 1){
 					$("link.ui-theme").filter(":first").remove();
 				}
-			};	
+			};
 
 			/* Inline CSS 
 			---------------------------------------------------------------------*/
 			//pane css
-			switcherpane.css({
+			$switcherpane.css({
 				position: 'absolute',
 				fontFamily: 'Trebuchet MS, Verdana, sans-serif',
 				display: 'inline-block',
@@ -246,7 +238,7 @@
 				borderRadius: '0px 0px 6px 6px',
 				borderTop: 0,
 				zIndex: 999999,
-				width: button.outerWidth()
+				width: $button.outerWidth()
 			})
 			.find('ul').css({
 				listStyle: 'none',
@@ -300,25 +292,26 @@
 				verticalAlign: 'middle'
 			}).end();
 
-			button.appendTo(this);
-			switcherpane.appendTo('body');
-			switcherpane.hide();
+			$button.appendTo(this);
+			$switcherpane.appendTo('body');
+			$switcherpane.hide();
 			
-			let themeName = '';
+			let themeName = '',
+			    $themeLink;
 			if( typeof Cookies !== 'undefined' ) {
 				if( Cookies.get(options.cookieName) || options.loadTheme ) {
 					themeName = Cookies.get(options.cookieName) || options.loadTheme;
-					mylink = switcherpane.find('a:contains('+ themeName +')');
-					updateCSS( $(mylink).attr('href') );
-					button.button('option', 'label', options.buttonPreText + themeName );
+					$themeLink = $switcherpane.find(`a:contains(${themeName})`);
+					updateCSS( $themeLink.attr('href') );
+					$button.button('option', 'label', options.buttonPreText + themeName );
 					Cookies.set(options.cookieName, themeName);
 				}
 			} else {
 				if( options.loadTheme ) {
 					themeName = options.loadTheme;
-					mylink = switcherpane.find('a:contains('+ themeName +')');
-					updateCSS( $(mylink).attr('href') );
-					button.button('option', 'label', options.buttonPreText + themeName );
+					$themeLink = $switcherpane.find(`a:contains(${themeName})`);
+					updateCSS( $themeLink.attr('href') );
+					$button.button('option', 'label', options.buttonPreText + themeName );
 				}
 			}
 		});
