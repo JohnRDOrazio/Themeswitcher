@@ -4,20 +4,15 @@
 ---------------------------------------------------------------------*/
 
 (function($, undefined) {
-	$.themeswitcher = { "version":"2.0.59" };
+	$.themeswitcher = { "version":"2.0.61" };
 	Object.freeze($.themeswitcher);
 
 	$.fn.themeswitcher = function(settings){
-		//console.log('value of "this" at first instantiation:');
-		//console.log(this);
 		
 		return this.each(function(){
 			
-			//console.log('value of "this" in each iterator:');
-			//console.log(this);
-			//console.log($(this));
 			//USER DEFINEABLE OPTIONS
-			var options = jQuery.extend({
+			const options = jQuery.extend({
 				loadTheme: null,
 				initialText: 'Switch Theme',
 				buttonPreText: 'Theme: ',
@@ -29,105 +24,144 @@
 				onSelect: function(){}
 			}, settings);
 			
-			var availableUiVersions = ["1.13.2", "1.13.1", "1.13.0", "1.12.1", "1.12.0", "1.11.4", "1.11.3", "1.11.2", "1.11.1", "1.11.0", "1.10.4", "1.10.3", "1.10.2", "1.10.1", "1.10.0", "1.9.2", "1.9.1", "1.9.0", "1.8.24", "1.8.23", "1.8.22", "1.8.21", "1.8.20", "1.8.19", "1.8.18", "1.8.17", "1.8.16", "1.8.15", "1.8.14", "1.8.13", "1.8.12", "1.8.11", "1.8.10", "1.8.9", "1.8.8", "1.8.7", "1.8.6", "1.8.5", "1.8.4", "1.8.2", "1.8.1", "1.8.0", "1.7.3", "1.7.2", "1.7.1", "1.7.0", "1.6.0", "1.5.3", "1.5.2"];
-			if(availableUiVersions.indexOf(options.jqueryUiVersion) === -1){
+			const availableUiVersions = ["1.13.2", "1.13.1", "1.13.0", "1.12.1", "1.12.0", "1.11.4", "1.11.3", "1.11.2", "1.11.1", "1.11.0", "1.10.4", "1.10.3", "1.10.2", "1.10.1", "1.10.0", "1.9.2", "1.9.1", "1.9.0", "1.8.24", "1.8.23", "1.8.22", "1.8.21", "1.8.20", "1.8.19", "1.8.18", "1.8.17", "1.8.16", "1.8.15", "1.8.14", "1.8.13", "1.8.12", "1.8.11", "1.8.10", "1.8.9", "1.8.8", "1.8.7", "1.8.6", "1.8.5", "1.8.4", "1.8.2", "1.8.1", "1.8.0", "1.7.3", "1.7.2", "1.7.1", "1.7.0", "1.6.0", "1.5.3", "1.5.2"];
+			if(false === availableUiVersions.includes(options.jqueryUiVersion)){
 				options.jqueryUiVersion = availableUiVersions[0];
 			}
-			
+
+			const themeLookupTable = {
+				"base": {
+					themeName: "Base",
+					thumbFile: "theme_30_smoothness.png"
+				},
+				"black-tie": {
+					themeName: "Black Tie",
+					thumbFile: "theme_30_black_tie.png"
+				},
+				"blitzer": {
+					themeName: "Blitzer",
+					thumbFile: "theme_30_blitzer.png"
+				},
+				"cupertino": {
+					themeName: "Cupertino",
+					thumbFile: "theme_30_cupertino.png"
+				},
+				"dark-hive": {
+					themeName: "Dark Hive",
+					thumbFile: "theme_30_dark_hive.png"
+				},
+				"dot-luv": {
+					themeName: "Dot Luv",
+					thumbFile: "theme_30_dot_luv.png"
+				},
+				"eggplant": {
+					themeName: "Eggplant",
+					thumbFile: "theme_30_eggplant.png"
+				},
+				"excite-bike": {
+					themeName: "Excite Bike",
+					thumbFile: "theme_30_excite_bike.png"
+				},
+				"flick": {
+					themeName: "Flick",
+					thumbFile: "theme_30_flick.png"
+				},
+				"hot-sneaks": {
+					themeName: "Hot Sneaks",
+					thumbFile: "theme_30_hot_sneaks.png"
+				},
+				"humanity": {
+					themeName: "Humanity",
+					thumbFile: "theme_30_humanity.png"
+				},
+				"le-frog": {
+					themeName: "Le Frog",
+					thumbFile: "theme_30_le_frog.png"
+				},
+				"mint-choc": {
+					themeName: "Mint Choc",
+					thumbFile: "theme_30_mint_choco.png"
+				},
+				"overcast": {
+					themeName: "Overcast",
+					thumbFile: "theme_30_overcast.png"
+				},
+				"pepper-grinder": {
+					themeName: "Pepper Grinder",
+					thumbFile: "theme_30_pepper_grinder.png"
+				},
+				"redmond": {
+					themeName: "Redmond",
+					thumbFile: "theme_30_windoze.png"
+				},
+				"smoothness": {
+					themeName: "Smoothness",
+					thumbFile: "theme_30_smoothness.png"
+				},
+				"south-street": {
+					themeName: "South Street",
+					thumbFile: "theme_30_south_street.png"
+				},
+				"start": {
+					themeName: "Start",
+					thumbFile: "theme_30_start_menu.png"
+				},
+				"sunny": {
+					themeName: "Sunny",
+					thumbFile: "theme_30_sunny.png"
+				},
+				"swanky-purse": {
+					themeName: "Swanky Purse",
+					thumbFile: "theme_30_swanky_purse.png"
+				},
+				"trontastic": {
+					themeName: "Trontastic",
+					thumbFile: "theme_30_trontastic.png"
+				},
+				"ui-darkness": {
+					themeName: "UI Darkness",
+					thumbFile: "theme_30_ui_dark.png"
+				},
+				"ui-lightness": {
+					themeName: "UI Lightness",
+					thumbFile: "theme_30_ui_light.png"
+				},
+				"vader": {
+					themeName: "Vader",
+					thumbFile: "theme_30_black_matte.png"
+				}
+			}
+
+			const themes = Object.keys(themeLookupTable);
+			const getThemeUrl = (theme) => `//ajax.googleapis.com/ajax/libs/jqueryui/${options.jqueryUiVersion}/themes/${theme}/jquery-ui.css`;
+			const getThumbUrl = (theme) => `//static.jquery.com/ui/themeroller/images/themeGallery/${themeLookupTable[theme].thumbFile}`;
+
 			//MARKUP
-			var button = $('<a href="#" class="jquery-ui-themeswitcher-trigger" style="min-width: 250px;" title="'+ options.initialText +'">'+ options.initialText +'</a>').button({
+			const getThemeMarkup = (idx) => {
+				let theme		= themes[idx];
+				let themeName 		= themeLookupTable[theme].themeName;
+				let url			= getThemeUrl(theme);
+				let thumb		= getThumbUrl(theme);
+				return `<li><a href="${url}">
+						<img src="${thumb}" alt="${themeName}" title="${themeName}" />
+						<span class="themeName">${themeName}</span></a>
+						</li>`;
+			}
+			let button = $('<a href="#" class="jquery-ui-themeswitcher-trigger" style="min-width: 250px;" title="'+ options.initialText +'">'+ options.initialText +'</a>').button({
 				icon: "ui-icon-caret-1-s",
 				iconPosition: "end"
 			}),
-			    ui_themes = [
-				{"themeName":"Base",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/base/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_smoothness.png"},
-				{"themeName":"Black Tie",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/black-tie/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_black_tie.png"},
-				{"themeName":"Blitzer",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/blitzer/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_blitzer.png"},
-				{"themeName":"Cupertino",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/cupertino/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_cupertino.png"},
-				{"themeName":"Dark Hive",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/dark-hive/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_dark_hive.png"},
-				{"themeName":"Dot Luv",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/dot-luv/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_dot_luv.png"},
-				{"themeName":"Eggplant",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/eggplant/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_eggplant.png"},
-				{"themeName":"Excite Bike",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/excite-bike/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_excite_bike.png"},
-				{"themeName":"Flick",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/flick/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_flick.png"},
-				{"themeName":"Hot Sneaks",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/hot-sneaks/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_hot_sneaks.png"},
-				{"themeName":"Humanity",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/humanity/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_humanity.png"},
-				{"themeName":"Le Frog",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/le-frog/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_le_frog.png"},
-				{"themeName":"Mint Choc",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/mint-choc/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_mint_choco.png"},
-				{"themeName":"Overcast",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/overcast/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_overcast.png"},
-				{"themeName":"Pepper Grinder",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/pepper-grinder/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_pepper_grinder.png"},
-				{"themeName":"Redmond",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/redmond/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_windoze.png"},
-				{"themeName":"Smoothness",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/smoothness/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_smoothness.png"},
-				{"themeName":"South Street",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/south-street/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_south_street.png"},
-				{"themeName":"Start",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/start/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_start_menu.png"},
-				{"themeName":"Sunny",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/sunny/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_sunny.png"},
-				{"themeName":"Swanky Purse",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/swanky-purse/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_swanky_purse.png"},
-				{"themeName":"Trontastic",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/trontastic/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_trontastic.png"},
-				{"themeName":"UI Darkness",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/ui-darkness/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_ui_dark.png"},
-				{"themeName":"UI Lightness",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/ui-lightness/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_ui_light.png"},
-				{"themeName":"Vader",
-				"url":"//ajax.googleapis.com/ajax/libs/jqueryui/"+options.jqueryUiVersion+"/themes/vader/jquery-ui.css",
-				"thumb":"//static.jquery.com/ui/themeroller/images/themeGallery/theme_30_black_matte.png"}
-			    ],
-			    ul_string = '<div class="jquery-ui-themeswitcher"><div class="themeGallery"><ul>';
-			
-			//automatically build ul contents using ui_themes array
-			for(var i=0;i<ui_themes.length;i++){
-				ul_string += '<li><a href="'+ui_themes[i].url+'">';
-				ul_string += '<img src="'+ui_themes[i].thumb+'" alt="'+ui_themes[i].themeName+'" title="'+ui_themes[i].themeName+'" />';
-				ul_string += '<span class="themeName">'+ui_themes[i].themeName+'</span></a></li>';  
+				ul_string_start = '<div class="jquery-ui-themeswitcher"><div class="themeGallery"><ul>',
+				ul_string_end = '</ul></div></div>',
+				ul_string_contents;
+
+			//automatically build ul contents using themeLookupTable
+			for(let i = 0; i < Object.keys(themeLookupTable).length; i++) {
+				ul_string_contents += getThemeMarkup(i);
 			}
 
-			ul_string += '</ul></div></div>';
-
-			var switcherpane = $(ul_string).find('div.themeGallery');
+			let ul_string = `${ul_string_start}${ul_string_contents}${ul_string_end}`,
+			    switcherpane = $(ul_string).find('div.themeGallery');
 
 			//button events
 			button.click(
@@ -199,25 +233,6 @@
 
 			/* Inline CSS 
 			---------------------------------------------------------------------*/
-
-			/*
-			//button css
-			button.css(button_default)
-			.hover(
-				function(){ 
-					$(this).css(button_hover); 
-				},
-				function(){ 
-				 if( !switcherpane.is(':animated') && switcherpane.is(':hidden') ){	$(this).css(button_default);  }
-				}	
-			)
-			.find('.jquery-ui-themeswitcher-icon').css({
-				float: 'right',
-				width: '16px',
-				height: '16px',
-				background: 'url(data:image/gif;base64,R0lGODlhBQADAIABAI+Pj////yH5BAEAAAEALAAAAAAFAAMAAAIFhB0XC1sAOw==) 50% 50% no-repeat'
-			});	
-			*/
 			//pane css
 			switcherpane.css({
 				position: 'absolute',
@@ -284,35 +299,31 @@
 				lineHeight: 'normal',
 				verticalAlign: 'middle'
 			}).end();
-			
-			//console.log(button);
-			//console.log(switcherpane);
-			
+
 			button.appendTo(this);
 			switcherpane.appendTo('body');
-			
 			switcherpane.hide();
 			
-			var themeName = '';
-			if(typeof Cookies !== 'undefined'){
-				if( Cookies.get(options.cookieName) || options.loadTheme ){
+			let themeName = '';
+			if( typeof Cookies !== 'undefined' ) {
+				if( Cookies.get(options.cookieName) || options.loadTheme ) {
 					themeName = Cookies.get(options.cookieName) || options.loadTheme;
 					mylink = switcherpane.find('a:contains('+ themeName +')');
 					updateCSS( $(mylink).attr('href') );
 					button.button('option', 'label', options.buttonPreText + themeName );
 					Cookies.set(options.cookieName, themeName);
 				}
-			}else{
-				if( options.loadTheme ){
+			} else {
+				if( options.loadTheme ) {
 					themeName = options.loadTheme;
 					mylink = switcherpane.find('a:contains('+ themeName +')');
 					updateCSS( $(mylink).attr('href') );
 					button.button('option', 'label', options.buttonPreText + themeName );
-				}		
+				}
 			}
 		});
 	}
-	
+
 	return this;
-	
+
 })(jQuery);
